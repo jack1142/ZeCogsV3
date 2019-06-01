@@ -1,0 +1,13 @@
+version: "1"
+rules:
+  - base: master
+    upstream: ZeLarpMaster:master    # change `wei` to the owner of upstream repo
+    mergeMethod: hardreset
+  - base: lucifer-bot
+    upstream: ZeLarpMaster:master
+    mergeMethod: merge
+    assignees:
+      - jack1142
+    reviewers:
+      - jack1142
+label: ":arrow_heading_down: update fork from upstream"
