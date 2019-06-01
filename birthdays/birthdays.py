@@ -183,7 +183,7 @@ class Birthdays(Cog):
                                     yesterdays.append(member.id)
                     channel = guild.get_channel(guild_config.get("channel"))
                     if channel is not None:
-                        await channel.send(embed=embed)
+                        await channel.send(embed.description)
 
     async def clean_bdays(self):
         # Cleans the birthday entries with no user's birthday
