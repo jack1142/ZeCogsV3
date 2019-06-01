@@ -159,11 +159,14 @@ class Birthdays(Cog):
 
     async def handle_bday(self, user_id: int, year: str):
         embed = discord.Embed(color=discord.Colour.gold())
+        """
         if year is not None:
             age = datetime.date.today().year - int(year)  # Doesn't support non-eastern age counts but whatever
             embed.description = self.BDAY_WITH_YEAR(user_id, age)
         else:
             embed.description = self.BDAY_WITHOUT_YEAR(user_id)
+        """
+        embed.description = self.BDAY_WITHOUT_YEAR(user_id)
         all_guild_configs = await self.config.all_guilds()
         for guild_id, guild_config in all_guild_configs.items():
             guild = self.bot.get_guild(guild_id)
