@@ -158,15 +158,7 @@ class Birthdays(Cog):
                 await member.remove_roles(role)
 
     async def handle_bday(self, guild_id: int, user_id: int, year: str):
-        embed = discord.Embed(color=discord.Colour.gold())
-        """
-        if year is not None:
-            age = datetime.date.today().year - int(year)  # Doesn't support non-eastern age counts but whatever
-            embed.description = self.BDAY_WITH_YEAR(user_id, age)
-        else:
-            embed.description = self.BDAY_WITHOUT_YEAR(user_id)
-        """
-        embed.description = self.BDAY_WITHOUT_YEAR(user_id)
+        msg = self.BDAY_WITHOUT_YEAR(user_id)
         guild = self.bot.get_guild(guild_id)
         if guild is not None:  # Ignore unavailable servers or servers the bot isn't in anymore
             member = guild.get_member(user_id)
@@ -187,7 +179,7 @@ class Birthdays(Cog):
                 channel_id = await self.config.guild(guild).channel()
                 channel = guild.get_channel(channel_id)
                 if channel is not None:
-                    await channel.send(embed=embed)
+                    await channel.send(msg)
                 else:
                     self.logger.warning("Couldn't find the birthdays channel in guild {} with id {}".format(guild, channel_id))
             else:
